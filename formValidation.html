@@ -4,6 +4,28 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>Form Validation</title>
+    <script>
+        $(document).ready(function(){
+           $("#submit").click(function(){
+               if($("#fname").val().length === 0){
+                   $("#fname").css({"background-color": "red"});
+                   $("#fnameE").css({"display": "block"});
+               }else{
+                   $("#fname").css({"background-color": "white"});
+                   $("#fnameE").css({"display": "none"});
+               }
+
+               var phone_filter = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+               if(!phone_filter.test($("#phone").val())){
+                   $("#phone").css({"background-color": "red"});
+                   $("#phoneE").css({"display": "block"});
+               }else{
+                   $("#phone").css({"background-color": "white"});
+                   $("#phoneE").css({"display": "none"});
+               }
+           });
+        });
+    </script>
 </head>
 <body>
 <form>
@@ -80,7 +102,7 @@
     <input type="text" name="city" id="zip" /><br />
 
     <label for="phone">Phone</label>
-    <input type="text" name="phone" id="phone" /><br />
+    <input type="text" name="phone" id="phone" placeholder="123-123-1234" /><br />
     <div id="phoneE" style="display:none">Please enter a valid phone number.</div>
 
     <label for="email">Email</label>
